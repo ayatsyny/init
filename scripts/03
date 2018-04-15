@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ $# != 1 ]
+then
+   echo There were $# parameters passed
+   echo You can only one paramater [folder]
+elif [ -d $1 ]
+then
+   du -ab | sort -nr
+else
+   echo The $1 folder does not exist
+fi

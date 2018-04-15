@@ -1,0 +1,5 @@
+#!/bin/bash
+while IFS=: read -r login pass_spec uid gid usr_name_or_com_filed path usr_cmd_inter
+do 
+ echo "$login $uid $path"
+done < /etc/passwd

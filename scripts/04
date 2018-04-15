@@ -1,0 +1,12 @@
+#!/bin/bash
+
+tmpmd5=$(cat /root/crontabsum)
+cronmd5=$(md5sum /etc/crontab | cut -d " " -f 1)
+
+if [ $tmpmd5 != $cronmd5 ]
+then
+	md5sum /root/tmp.txt | cut -d " " -f 1 > /root/crontabsum
+	mail -s "Changed crontab file" root@localhost < /root/secc.txt
+fi
+
+# echo '00 0 * * * /root/scripts/04' | crontab
